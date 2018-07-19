@@ -1,0 +1,29 @@
+{
+  "name": "vue-basic",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./devServer"
+  },
+  "dependencies": {
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^10.5.2",
+    "css-loader": "^1.0.0",
+    "file-loader": "^1.1.11",
+    "fork-ts-checker-webpack-plugin": "^0.4.3",
+    "prettier": "^1.13.7",
+    "style-loader": "^0.21.0",
+    "ts-loader": "^4.4.2",
+    "typescript": "^2.9.2",
+    "vue-loader": "^15.2.6",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^4.16.1",
+    "webpack-command": "^0.4.1",
+    "webpack-dev-server": "^3.1.4"
+  }
+}

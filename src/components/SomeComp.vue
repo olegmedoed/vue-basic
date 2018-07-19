@@ -1,0 +1,19 @@
+<script>
+  export default {
+    name: "SomeComp",
+    props: ["items"]
+  };
+</script>
+
+<template>
+  <ul>
+    <li v-for="item in items">
+      {{item}}
+    </li>
+  </ul>
+</template>
+
+
+<style scoped>
+
+</style>
