@@ -1,14 +1,15 @@
+const p = require("path");
 const webpack = require("webpack");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
-// const { PORT = 3000 } = process.env;
+const { PORT = 3000 } = process.env;
 
 module.exports = {
   name: "client",
   mode: "development",
   entry: [
-    "webpack-dev-server/client?http://0.0.0.0:3000",
+    `webpack-dev-server/client?http://0.0.0.0:${PORT}`,
     "webpack/hot/only-dev-server",
     __dirname + "/src/index.ts",
   ],
@@ -17,12 +18,6 @@ module.exports = {
     path: __dirname + "/dist",
     filename: "[name].js",
     publicPath: "/",
-  },
-  devServer: {
-    contentBase: __dirname + "/public",
-    port: 3000,
-    historyApiFallback: true,
-    hot: true,
   },
   module: {
     rules: [
@@ -39,6 +34,10 @@ module.exports = {
         use: ["vue-loader"],
       },
       {
+        test: /\.pug$/,
+        use: ["pug-plain-loader"],
+      },
+      {
         test: /\.(png|svg)$/i,
         use: [
           "file-loader",
@@ -49,6 +48,10 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.scss$/,
+        use: ["vue-style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
@@ -70,5 +73,8 @@ module.exports = {
   ],
   resolve: {
     extensions: [".vue", ".ts", ".js"],
+    alias: {
+      "@": p.resolve("src"),
+    },
   },
 };

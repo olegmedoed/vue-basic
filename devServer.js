@@ -14,10 +14,14 @@ const webpackConfig = require(`./webpack.config`);
 const compiler = Webpack(webpackConfig);
 const devServerOptions = Object.assign({}, webpackConfig.devServer, {
   public: HOST,
+  hot: true,
+  contentBase: __dirname + "/public",
+  port: 3000,
+  historyApiFallback: true,
   disableHostCheck: true,
   stats: {
-    colors: true
-  }
+    colors: true,
+  },
 });
 const devServer = new WebpackDevServer(compiler, devServerOptions);
 

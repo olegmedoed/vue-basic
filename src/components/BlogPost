@@ -1,7 +1,19 @@
-<script>
+<script lang="ts">
 export default {
   name: "BlogPost",
-  props: ["post"],
+  props: {
+    post: Object,
+  },
+
+  methods: {
+    increase() {
+      this.$emit("enlarge-text", 0.1);
+    },
+
+    decrease() {
+      this.$emit("decrease-text", 0.1);
+    },
+  },
 };
 </script>
 
@@ -9,12 +21,12 @@ export default {
   <div class="blog-post">
     <h3>{{post.title}}</h3>
     <button
-      v-on:click="$emit('enlarge-text')"
+      v-on:click="increase"
     >
       Enlarge text
     </button>
     <button
-      v-on:click="$emit('decrease-text')"
+      v-on:click="decrease"
     >
       Decrease text
     </button>
